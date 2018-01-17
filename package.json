@@ -1,0 +1,24 @@
+{
+    "name": "react-native-tree-picker",
+    "version": "0.1.1",
+    "description": "React native tree picker",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "lint": "eslint --ext .js ."
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/deadtriggerf5/react-native-tree-picker.git"
+    },
+    "author": "sbycrosz",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/deadtriggerf5/react-native-tree-picker/issues"
+    },
+    "homepage": "https://github.com/deadtriggerf5/react-native-tree-picker",
+    "dependencies": {
+        "react-native-material-ui": "^1.16.0",
+        "prop-types": "^15.6.0"
+    }
+}
