@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { TouchableNativeFeedback, View, Text, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
-import vars from '../theme/vars';
+import vars from './theme/vars';
 
 const styles = StyleSheet.create({
     container: {

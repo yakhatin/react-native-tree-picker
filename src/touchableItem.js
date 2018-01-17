@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, TouchableOpacity, Text } from 'react-native';
 import PropTypes from 'prop-types';
 import { ThemeProvider, Icon } from 'react-native-material-ui';
-import { pickerItems as styles } from '../../theme/styles';
+import { pickerItems as styles } from './theme/styles';
 
 export default class TouchableItem extends Component {
     static propTypes = {
