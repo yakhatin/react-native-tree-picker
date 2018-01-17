@@ -173,6 +173,7 @@ export default class Picker extends Component {
     }
 
     render() {
+        alert('123');
         return (
             <View>
                 {this.showPickerTitle()}
