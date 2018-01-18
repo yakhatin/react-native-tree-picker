@@ -1,6 +1,6 @@
 {
     "name": "react-native-tree-picker",
-    "version": "0.1.7",
+    "version": "0.1.8",
     "description": "React native tree picker",
     "main": "index.js",
     "scripts": {
