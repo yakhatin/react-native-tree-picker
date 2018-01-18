@@ -11,7 +11,10 @@ data = [
                 < Here Children can be too >
             }
         ]
+    },
+    {
+        Id, 
+        Title,
+        Children: []
     }
 ]
-
-<img src="https://avatars0.githubusercontent.com/u/28294048?s=40&v=4"/>
