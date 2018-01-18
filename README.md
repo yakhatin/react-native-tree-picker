@@ -35,7 +35,8 @@ export default class Test extends Component {
                 <TreePicker 
                     title="Select" 
                     data={data}
-                    onPress={this.onPress} />
+                    onPress={this.onPress}
+                    selectParent={true} />
             </View>
         );
     }
