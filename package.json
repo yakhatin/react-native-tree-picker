@@ -1,24 +1,54 @@
 {
+  "_args": [
+    [
+      "react-native-tree-picker@0.1.8",
+      "E:\\apps\\bodyLab"
+    ]
+  ],
+  "_from": "react-native-tree-picker@0.1.8",
+  "_id": "react-native-tree-picker@0.1.8",
+  "_inBundle": false,
+  "_integrity": "sha1-VpMoPNNFAsscZjfkLOHJQGZ3+xg=",
+  "_location": "/react-native-tree-picker",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "react-native-tree-picker@0.1.8",
     "name": "react-native-tree-picker",
-    "version": "0.1.8",
-    "description": "React native tree picker",
-    "main": "index.js",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
-        "lint": "eslint --ext .js ."
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/deadtriggerf5/react-native-tree-picker.git"
-    },
-    "author": "deadtriggerf5",
-    "license": "MIT",
-    "bugs": {
-        "url": "https://github.com/deadtriggerf5/react-native-tree-picker/issues"
-    },
-    "homepage": "https://github.com/deadtriggerf5/react-native-tree-picker",
-    "dependencies": {
-        "react-native-material-ui": "^1.16.0",
-        "prop-types": "^15.6.0"
-    }
+    "escapedName": "react-native-tree-picker",
+    "rawSpec": "0.1.8",
+    "saveSpec": null,
+    "fetchSpec": "0.1.8"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/react-native-tree-picker/-/react-native-tree-picker-0.1.8.tgz",
+  "_spec": "0.1.8",
+  "_where": "E:\\apps\\bodyLab",
+  "author": {
+    "name": "deadtriggerf5"
+  },
+  "bugs": {
+    "url": "https://github.com/deadtriggerf5/react-native-tree-picker/issues"
+  },
+  "dependencies": {
+    "prop-types": "^15.6.0",
+    "react-native-material-ui": "^1.16.0"
+  },
+  "description": "React native tree picker",
+  "homepage": "https://github.com/deadtriggerf5/react-native-tree-picker",
+  "license": "MIT",
+  "main": "index.js",
+  "name": "react-native-tree-picker",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/deadtriggerf5/react-native-tree-picker.git"
+  },
+  "scripts": {
+    "lint": "eslint --ext .js .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "0.1.8"
 }

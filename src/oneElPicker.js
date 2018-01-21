@@ -5,7 +5,6 @@ import { ThemeProvider, Icon } from 'react-native-material-ui';
 import { picker as styles } from './theme/styles';
 import TouchableItem from './touchableItem';
 import Button from './button';
-import vars from './theme/vars';
 
 export default class Picker extends Component {
     static propTypes = {
@@ -22,10 +21,15 @@ export default class Picker extends Component {
             underline: PropTypes.shape({
                 borderBottomColor: PropTypes.string,
                 paddingBottom: PropTypes.number
-            })
+            }),
+            firstBtnColor: PropTypes.string,
+            scndBtnColor: PropTypes.string,
+            firstBtnTxtColor: PropTypes.string,
+            scndBtnTxtColor: PropTypes.string
         }),
-        selectParent: PropTypes.bool,
-        selectMany: PropTypes.bool
+        selectParent: PropTypes.bool.isRequired,
+        firstBtnTitle: PropTypes.string,
+        scndBtnTitle: PropTypes.string
     }
 
     static defaultProps = {
@@ -41,10 +45,14 @@ export default class Picker extends Component {
             underline: {
                 borderBottomColor: 'white',
                 paddingBottom: 10
-            }
+            },
+            firstBtnColor: '#1A3D80',
+            scndBtnColor: 'white',
+            firstBtnTxtColor: 'white',
+            scndBtnTxtColor: 'black'
         },
-        selectParent: false,
-        selectMany: false
+        firstBtnTitle: null,
+        scndBtnTitle: null
     }
 
     constructor(props) {
@@ -52,7 +60,7 @@ export default class Picker extends Component {
         this.state = {
             visible: false,
             showChildren: {},
-            selected: props.selectMany ? [] : {}
+            selected: {}
         };
     }
 
@@ -94,7 +102,7 @@ export default class Picker extends Component {
 
     selectItem = () => {
         this.toVisible();
-        this.props.onPress(this.state.selected);
+        this.props.onPress(this.state.selected.Id);
     }
 
     /**
@@ -134,14 +142,22 @@ export default class Picker extends Component {
             if (item.Children && item.Children.length > 0) {
                 return (
                     <View key={item.Id} style={{ marginLeft: margin }}>
-                        <TouchableItem selected={this.state.selected[item.Id]} showIcon={item.Children.length > 0} isOpen={this.state.showChildren[item.Id]} value={item.Title} onPress={() => this.onItemPress(item.Id, false, item.Title)} />
+                        <TouchableItem
+                            selected={this.state.selected[item.Id]}
+                            showIcon={item.Children.length > 0}
+                            isOpen={this.state.showChildren[item.Id]}
+                            value={item.Title}
+                            onPress={() => this.onItemPress(item.Id, false, item.Title)} />
                         { this.renderChildren(item.Children, item.Id, 20) }
                     </View>
                 );
             }
             return (
                 <View key={item.Id} style={{ marginLeft: margin }}>
-                    <TouchableItem selected={this.state.selected[item.Id]} value={item.Title} onPress={() => this.onItemPress(item.Id, true, item.Title)} />
+                    <TouchableItem
+                        selected={this.state.selected[item.Id]}
+                        value={item.Title}
+                        onPress={() => this.onItemPress(item.Id, true, item.Title)} />
                 </View>
             );
         }
@@ -151,17 +167,25 @@ export default class Picker extends Component {
     renderFeedbackItems = () => {
         const { data } = this.props;
         return data.map((item) => {
-            if (item.Children.length > 0) {
+            if (item.Children && item.Children.length > 0) {
                 return (
                     <View key={item.Id}>
-                        <TouchableItem showIcon={item.Children.length > 0} isOpen={this.state.showChildren[item.Id]} value={item.Title} onPress={() => this.onItemPress(item.Id, false, item.Title)} />
+                        <TouchableItem
+                            selected={this.state.selected[item.Id]}
+                            showIcon={item.Children.length > 0}
+                            isOpen={this.state.showChildren[item.Id]}
+                            value={item.Title}
+                            onPress={() => this.onItemPress(item.Id, false, item.Title)} />
                         { this.renderChildren(item.Children, item.Id, 20) }
                     </View>
                 );
             }
             return (
                 <View key={item.Id}>
-                    <TouchableItem selected={this.state.selected[item.Id]} value={item.Title} onPress={() => this.onItemPress(item.Id, true, item.Title)} />
+                    <TouchableItem
+                        selected={this.state.selected[item.Id]}
+                        value={item.Title}
+                        onPress={() => this.onItemPress(item.Id, true, item.Title)} />
                 </View>
             );
         });
@@ -178,13 +202,19 @@ export default class Picker extends Component {
                                 { this.renderFeedbackItems() }
                             </ScrollView>
                             <View style={{ flexDirection: 'row', justifyContent: 'flex-end', padding: 10 }}>
-                                <Button color="white" backgroundColor={vars.primaryColor} width={112} onPress={this.selectItem} title="Выбрать" />
+                                {this.state.selected.Id &&
                                 <Button
-                                    color="black"
-                                    backgroundColor={vars.cointainerBackgroundColor}
+                                    color={this.props.style.firstBtnTxtColor || 'white'}
+                                    backgroundColor={this.props.style.firstBtnColor || '#1A3D80'}
+                                    width={112}
+                                    onPress={this.selectItem}
+                                    title={this.props.firstBtnTitle || 'Done'} />}
+                                <Button
+                                    color={this.props.style.scndBtnTxtColor || 'black'}
+                                    backgroundColor={this.props.style.scndBtnColor || 'white'}
                                     width={112}
                                     onPress={this.onCancelPress}
-                                    title="Отмена"
+                                    title={this.props.scndBtnTitle || 'Cancel'}
                                     style={{ container: { marginLeft: 20 } }} />
                             </View>
                         </View>

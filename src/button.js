@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import { TouchableNativeFeedback, View, Text, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
-import vars from './theme/vars';
 
 const styles = StyleSheet.create({
     container: {
-        borderColor: vars.borderColorDark,
+        borderColor: '#B3B3B3',
         borderWidth: 0.5,
         justifyContent: 'center',
         alignItems: 'center',
