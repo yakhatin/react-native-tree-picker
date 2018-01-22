@@ -102,7 +102,7 @@ export default class Picker extends Component {
 
     selectItem = () => {
         this.toVisible();
-        this.props.onPress(this.state.selected.Id);
+        this.props.onPress(this.state.selected.Id, this.state.selected.title);
     }
 
     /**
