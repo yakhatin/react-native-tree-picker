@@ -26,7 +26,8 @@ static propTypes = {
             scndBtnTxtColor: PropTypes.string
         }),
         firstBtnTitle: PropTypes.string,
-        scndBtnTitle: PropTypes.string
+        scndBtnTitle: PropTypes.string,
+        customTitle: PropTypes.func
     }
 
     static defaultProps = {
@@ -50,9 +51,10 @@ static propTypes = {
             scndBtnTxtColor: 'black'
         },
         firstBtnTitle: null,
-        scndBtnTitle: null
+        scndBtnTitle: null,
+        customTitle: null
     }
-
+    
 ```
 # Example
 ```javascript
