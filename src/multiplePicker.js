@@ -30,7 +30,8 @@ export default class Picker extends Component {
         selectParent: PropTypes.bool.isRequired,
         selectAllChildren: PropTypes.bool.isRequired,
         firstBtnTitle: PropTypes.string,
-        scndBtnTitle: PropTypes.string
+        scndBtnTitle: PropTypes.string,
+        customTitle: PropTypes.func
     }
 
     static defaultProps = {
@@ -53,7 +54,8 @@ export default class Picker extends Component {
             scndBtnTxtColor: 'black'
         },
         firstBtnTitle: null,
-        scndBtnTitle: null
+        scndBtnTitle: null,
+        customTitle: null
     }
 
     constructor(props) {
@@ -117,7 +119,11 @@ export default class Picker extends Component {
     /**
      * Вернуть заголовок Пикера
      */
-    showPickerTitle = () => (
+    showPickerTitle = () => {
+        if(this.props.customTitle){
+            return this.props.customTitle(this.toVisible);  
+        }
+        return(
         <View>
             <TouchableOpacity onPress={this.toVisible}>
                 <View style={styles.row}>
@@ -135,7 +141,7 @@ export default class Picker extends Component {
             </TouchableOpacity>
             <View style={[styles.underline, this.props.style.underline]} />
         </View>
-    )
+    )}
 
     /**
      * Показат/скрыть пикер

@@ -29,7 +29,8 @@ export default class Picker extends Component {
         }),
         selectParent: PropTypes.bool.isRequired,
         firstBtnTitle: PropTypes.string,
-        scndBtnTitle: PropTypes.string
+        scndBtnTitle: PropTypes.string,
+        customTitle: PropTypes.func
     }
 
     static defaultProps = {
@@ -52,7 +53,8 @@ export default class Picker extends Component {
             scndBtnTxtColor: 'black'
         },
         firstBtnTitle: null,
-        scndBtnTitle: null
+        scndBtnTitle: null,
+        customTitle: null
     }
 
     constructor(props) {
@@ -108,25 +110,30 @@ export default class Picker extends Component {
     /**
      * Вернуть заголовок Пикера
      */
-    showPickerTitle = () => (
-        <View>
-            <TouchableOpacity onPress={this.toVisible}>
-                <View style={styles.row}>
-                    <View style={{ flex: 1, justifyContent: 'center' }}>
-                        <Text style={[styles.titleText, this.props.style.text]}>
-                            { this.props.title }
-                        </Text>
+    showPickerTitle = () => {
+        if(this.props.customTitle){
+            return this.props.customTitle(this.toVisible);  
+        }
+        return (
+            <View>
+                <TouchableOpacity onPress={this.toVisible}>
+                    <View style={styles.row}>
+                        <View style={{ flex: 1, justifyContent: 'center' }}>
+                            <Text style={[styles.titleText, this.props.style.text]}>
+                                { this.props.title }
+                            </Text>
+                        </View>
+                        <View style={styles.arrowImage}>
+                            <ThemeProvider uiTheme={{}}>
+                                <Icon name="arrow-drop-down" color={this.props.style.icon.color} />
+                            </ThemeProvider>
+                        </View>
                     </View>
-                    <View style={styles.arrowImage}>
-                        <ThemeProvider uiTheme={{}}>
-                            <Icon name="arrow-drop-down" color={this.props.style.icon.color} />
-                        </ThemeProvider>
-                    </View>
-                </View>
-            </TouchableOpacity>
-            <View style={[styles.underline, this.props.style.underline]} />
-        </View>
-    )
+                </TouchableOpacity>
+                <View style={[styles.underline, this.props.style.underline]} />
+            </View>
+        )
+    }
 
     /**
      * Показат/скрыть пикер

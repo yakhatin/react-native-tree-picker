@@ -28,7 +28,8 @@ export default class TreePicker extends Component {
             scndBtnTxtColor: PropTypes.string
         }),
         firstBtnTitle: PropTypes.string,
-        scndBtnTitle: PropTypes.string
+        scndBtnTitle: PropTypes.string,
+        customTitle: PropTypes.func
     }
 
     static defaultProps = {
@@ -52,7 +53,8 @@ export default class TreePicker extends Component {
             scndBtnTxtColor: 'black'
         },
         firstBtnTitle: null,
-        scndBtnTitle: null
+        scndBtnTitle: null,
+        customTitle: null
     }
 
     render() {
@@ -65,7 +67,8 @@ export default class TreePicker extends Component {
                     selectParent={this.props.selectParent}
                     style={this.props.style}
                     firstBtnTitle={this.props.firstBtnTitle}
-                    scndBtnTitle={this.props.scndBtnTitle} />
+                    scndBtnTitle={this.props.scndBtnTitle}
+                    customTitle={this.props.customTitle} />
             );
         }
         return (
@@ -77,7 +80,8 @@ export default class TreePicker extends Component {
                 selectAllChildren={this.props.selectAllChildren}
                 style={this.props.style}
                 firstBtnTitle={this.props.firstBtnTitle}
-                scndBtnTitle={this.props.scndBtnTitle} />
+                scndBtnTitle={this.props.scndBtnTitle}
+                customTitle={this.props.customTitle} />
         );
     }
 }
