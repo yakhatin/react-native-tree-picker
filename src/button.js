@@ -42,7 +42,9 @@ export default class Button extends Component {
         return (
             <TouchableNativeFeedback onPress={this.props.onPress}>
                 <View style={[styles.container, { width, backgroundColor }, this.props.style.container]}>
-                    <Text style={[styles.btnTxt, { color }]}>{title.toUpperCase()}</Text>
+                    <Text style={[styles.btnTxt, { color }]}>
+                        {title.toUpperCase()}
+                    </Text>
                 </View>
             </TouchableNativeFeedback>
         );
