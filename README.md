@@ -85,6 +85,12 @@ export default class Test extends Component {
     onPress = (selected) => {
         alert(JSON.stringify(selected));
     }
+    
+    customTitle = (funcShowPicker) => {
+    	<Text onPress={funcShowPicker}>
+	     Show picker
+	</Text>
+    }
 
     render() {
         return (
@@ -94,6 +100,12 @@ export default class Test extends Component {
                     data={data}
                     onPress={this.onPress}
                     selectParent={true} />
+		<TreePicker 
+                    title="Select" 
+                    data={data}
+                    onPress={this.onPress}
+                    selectParent={true}
+		    customTitle={this.customTitle}/>
             </View>
         );
     }
