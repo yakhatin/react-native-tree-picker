@@ -30,7 +30,8 @@ export default class Picker extends Component {
         selectParent: PropTypes.bool.isRequired,
         firstBtnTitle: PropTypes.string,
         scndBtnTitle: PropTypes.string,
-        customTitle: PropTypes.func
+        customTitle: PropTypes.func,
+        clearAfterSelect: PropTypes.bool
     }
 
     static defaultProps = {
@@ -54,7 +55,8 @@ export default class Picker extends Component {
         },
         firstBtnTitle: null,
         scndBtnTitle: null,
-        customTitle: null
+        customTitle: null,
+        clearAfterSelect: false
     }
 
     constructor(props) {
@@ -103,6 +105,12 @@ export default class Picker extends Component {
     }
 
     selectItem = () => {
+        if(this.props.clearAfterSelect){
+            this.setState({
+                showChildren: {},
+                selected: {}
+            })
+        }
         this.toVisible();
         this.props.onPress(this.state.selected.Id, this.state.selected.title);
     }

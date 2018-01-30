@@ -2,7 +2,7 @@
 
 # Props
 ```javascript
-static propTypes = {
+    static propTypes = {
         multipleSelection: PropTypes.bool,
         title: PropTypes.string.isRequired,
         data: PropTypes.arrayOf(PropTypes.object).isRequired,
@@ -27,7 +27,8 @@ static propTypes = {
         }),
         firstBtnTitle: PropTypes.string,
         scndBtnTitle: PropTypes.string,
-        customTitle: PropTypes.func
+        customTitle: PropTypes.func,
+        clearAfterSelect: PropTypes.bool
     }
 
     static defaultProps = {
@@ -52,7 +53,8 @@ static propTypes = {
         },
         firstBtnTitle: null,
         scndBtnTitle: null,
-        customTitle: null
+        customTitle: null,
+        clearAfterSelect: false
     }
     
 ```
@@ -76,8 +78,7 @@ const data = [
     },
     {
         Id, 
-        Title,
-        Children: []
+        Title
     }
 ];
 
@@ -88,8 +89,8 @@ export default class Test extends Component {
     
     customTitle = (funcShowPicker) => {
     	<Text onPress={funcShowPicker}>
-	     Show picker
-	</Text>
+	        Show picker
+	    </Text>
     }
 
     render() {
@@ -100,12 +101,12 @@ export default class Test extends Component {
                     data={data}
                     onPress={this.onPress}
                     selectParent={true} />
-		<TreePicker 
+		        <TreePicker 
                     title="Select" 
                     data={data}
                     onPress={this.onPress}
                     selectParent={true}
-		    customTitle={this.customTitle}/>
+		            customTitle={this.customTitle}/>
             </View>
         );
     }
