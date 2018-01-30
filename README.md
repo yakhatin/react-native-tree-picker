@@ -90,7 +90,7 @@ export default class Test extends Component {
     customTitle = (funcShowPicker) => {
     	<Text onPress={funcShowPicker}>
 	        Show picker
-	    </Text>
+	</Text>
     }
 
     render() {
@@ -101,12 +101,12 @@ export default class Test extends Component {
                     data={data}
                     onPress={this.onPress}
                     selectParent={true} />
-		        <TreePicker 
+		 <TreePicker 
                     title="Select" 
                     data={data}
                     onPress={this.onPress}
                     selectParent={true}
-		            customTitle={this.customTitle}/>
+		    customTitle={this.customTitle}/>
             </View>
         );
     }
