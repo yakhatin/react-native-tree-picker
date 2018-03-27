@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { TouchableNativeFeedback, View, Text, StyleSheet } from 'react-native';
+import { TouchableNativeFeedback, View, Text, StyleSheet, TouchableWithoutFeedback, Platform } from 'react-native';
 import PropTypes from 'prop-types';
 
 const styles = StyleSheet.create({
@@ -39,14 +39,15 @@ export default class Button extends Component {
         const {
             title, width, backgroundColor, color
         } = this.props;
+        const Touch = Platform.OS === 'ios' ? TouchableWithoutFeedback : TouchableNativeFeedback;
         return (
-            <TouchableNativeFeedback onPress={this.props.onPress}>
+            <Touch onPress={this.props.onPress}>
                 <View style={[styles.container, { width, backgroundColor }, this.props.style.container]}>
                     <Text style={[styles.btnTxt, { color }]}>
                         {title.toUpperCase()}
                     </Text>
                 </View>
-            </TouchableNativeFeedback>
+            </Touch>
         );
     }
 }
